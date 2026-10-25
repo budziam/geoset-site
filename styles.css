@@ -1,22 +1,10 @@
 :root {
-  color-scheme: light dark;
+  color-scheme: light;
 
   --bg: #ffffff;
   --ink: #10131a;
   --muted: #6a7280;
   --accent: #e7791a;
-  --plate: #ffffff;
-  --plate-shadow: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0d0f13;
-    --ink: #f2f4f8;
-    --muted: #98a0ae;
-    --accent: #f08a2e;
-    --plate-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
-  }
 }
 
 *,
@@ -78,16 +66,10 @@ a:focus-visible {
   line-height: 0;
 }
 
-/* The logo is a white-background raster: keep it on a white plate so the
-   black lettering stays readable in dark mode. */
 .logo {
   display: block;
   width: clamp(238px, 64vw, 396px);
   height: auto;
-  background: var(--plate);
-  border-radius: 14px;
-  padding: clamp(10px, 2.8vw, 18px);
-  box-shadow: var(--plate-shadow);
 }
 
 .logo--small {
