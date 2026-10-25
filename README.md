@@ -16,8 +16,12 @@ Strona dostosowuje się do trybu jasnego/ciemnego (`prefers-color-scheme`).
 | `CNAME` | domena dla GitHub Pages (`geoset.pl`) |
 | `.nojekyll` | wyłącza przetwarzanie przez Jekyll |
 
-`index.html` używa ścieżek relatywnych (działa też pod `budziam.github.io/geoset-site/`),
-`404.html` — bezwzględnych, bo GitHub Pages serwuje 404 pod dowolną głębokością ścieżki.
+`index.html` używa ścieżek relatywnych, `404.html` — bezwzględnych, bo GitHub Pages
+serwuje 404 pod dowolną głębokością ścieżki.
+
+Podglądu pod `budziam.github.io/geoset-site/` nie ma: obecność `CNAME` powoduje, że
+GitHub przekierowuje ten adres na `geoset.pl`. Żeby zobaczyć stronę przed zmianą DNS,
+usuń na chwilę `CNAME`, albo testuj lokalnie (`python3 -m http.server`).
 
 Podmiana logo: nadpisz `logo.svg` (najlepiej `viewBox="0 0 64 64"`).
 Podmiana nazwy: `<h1 class="title">` w `index.html` oraz `<title>` i tagi `og:`.
