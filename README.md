@@ -9,10 +9,10 @@ Strona dostosowuje się do trybu jasnego/ciemnego (`prefers-color-scheme`).
 
 | Plik | Rola |
 |---|---|
-| `index.html` | strona główna — samo logo (nazwa jest częścią znaku) |
+| `index.html` | strona główna — logo, opis, dane kontaktowe |
 | `404.html` | strona błędu 404 |
 | `styles.css` | cała stylistyka |
-| `logo.png` | oficjalny znak firmowy, 960×361, przycięty z mastera |
+| `logo.png` | oficjalny znak firmowy, 960×353, przycięty z mastera |
 | `icon.png` | favicon / apple-touch-icon, 180×180 (fragment globusa) |
 | `logo-source.png` | master 1458×1458 — źródło do ponownego eksportu |
 | `CNAME` | domena dla GitHub Pages (`geoset.pl`) |

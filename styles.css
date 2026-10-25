@@ -2,17 +2,20 @@
   color-scheme: light dark;
 
   --bg: #ffffff;
-  --ink: #11141a;
-  --muted: #6b7280;
+  --ink: #10131a;
+  --muted: #6a7280;
+  --accent: #e7791a;
+  --plate: #ffffff;
   --plate-shadow: none;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #0e1014;
-    --ink: #f3f5f9;
+    --bg: #0d0f13;
+    --ink: #f2f4f8;
     --muted: #98a0ae;
-    --plate-shadow: 0 18px 50px rgba(0, 0, 0, 0.5);
+    --accent: #f08a2e;
+    --plate-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
   }
 }
 
@@ -29,9 +32,12 @@ html {
 body {
   margin: 0;
   min-height: 100svh;
-  display: grid;
-  place-items: center;
-  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(2.5rem, 7vw, 4rem);
+  padding: clamp(2rem, 6vw, 4rem) 1.5rem;
   background: var(--bg);
   color: var(--ink);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto,
@@ -41,16 +47,30 @@ body {
 }
 
 ::selection {
-  background: color-mix(in srgb, currentColor 18%, transparent);
+  background: color-mix(in srgb, var(--accent) 25%, transparent);
+}
+
+a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(1.75rem, 5vw, 2.5rem);
+  width: 100%;
+  max-width: 46rem;
+  animation: rise 700ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
 
 .brand {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: clamp(1.25rem, 4vw, 2rem);
-  text-align: center;
-  animation: rise 700ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  gap: clamp(1.1rem, 3.5vw, 1.6rem);
 }
 
 .brand-title {
@@ -58,27 +78,94 @@ body {
   line-height: 0;
 }
 
-/* the logo is a white-background raster: padding keeps it off the edges,
-   the plate only becomes visible in dark mode */
+/* The logo is a white-background raster: keep it on a white plate so the
+   black lettering stays readable in dark mode. */
 .logo {
   display: block;
-  width: clamp(240px, 74vw, 480px);
+  width: clamp(238px, 64vw, 396px);
   height: auto;
-  background: #fff;
+  background: var(--plate);
   border-radius: 14px;
-  padding: clamp(10px, 3vw, 20px);
+  padding: clamp(10px, 2.8vw, 18px);
   box-shadow: var(--plate-shadow);
 }
 
 .logo--small {
-  width: clamp(200px, 56vw, 320px);
+  width: clamp(190px, 50vw, 300px);
+}
+
+.tagline {
+  margin: 0;
+  margin-right: -0.22em; /* balance trailing letter-spacing */
+  color: var(--muted);
+  font-size: clamp(0.68rem, 1.9vw, 0.78rem);
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.contact {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem 1.9rem;
+  margin: 0;
+  font-style: normal;
+  font-size: clamp(0.9rem, 2.4vw, 1rem);
+}
+
+.contact-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.3rem 0;
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 180ms ease, border-color 180ms ease;
+}
+
+.contact-item:hover {
+  color: var(--ink);
+  border-bottom-color: var(--accent);
+}
+
+.contact-item svg {
+  width: 1rem;
+  height: 1rem;
+  flex: none;
+  opacity: 0.65;
+  transition: opacity 180ms ease;
+}
+
+.contact-item:hover svg {
+  opacity: 1;
+}
+
+.footer {
+  color: var(--muted);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
 }
 
 .note {
   margin: 0;
   color: var(--muted);
   font-size: clamp(0.9rem, 2.6vw, 1.05rem);
-  letter-spacing: 0.02em;
+}
+
+.note a {
+  color: var(--muted);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: color-mix(in srgb, currentColor 45%, transparent);
+  text-underline-offset: 4px;
+  transition: color 180ms ease;
+}
+
+.note a:hover {
+  color: var(--ink);
 }
 
 .note strong {
@@ -95,6 +182,13 @@ body {
   to {
     opacity: 1;
     transform: none;
+  }
+}
+
+@media (max-width: 26em) {
+  .contact {
+    flex-direction: column;
+    gap: 0.9rem;
   }
 }
 
