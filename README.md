@@ -2,17 +2,19 @@
 
 Minimalna strona startowa dla **geoset.pl**, publikowana przez GitHub Pages.
 
-Bez build stepu, bez zależności, bez JS-a: dwa pliki HTML, jeden arkusz stylów i logo SVG.
+Bez build stepu, bez zależności, bez JS-a: dwa pliki HTML, jeden arkusz stylów i logo.
 Strona dostosowuje się do trybu jasnego/ciemnego (`prefers-color-scheme`).
 
 ## Pliki
 
 | Plik | Rola |
 |---|---|
-| `index.html` | strona główna — logo + tytuł |
+| `index.html` | strona główna — samo logo (nazwa jest częścią znaku) |
 | `404.html` | strona błędu 404 |
 | `styles.css` | cała stylistyka |
-| `logo.svg` | znak firmowy (favicon + logo na stronie) |
+| `logo.png` | oficjalny znak firmowy, 960×361, przycięty z mastera |
+| `icon.png` | favicon / apple-touch-icon, 180×180 (fragment globusa) |
+| `logo-source.png` | master 1458×1458 — źródło do ponownego eksportu |
 | `CNAME` | domena dla GitHub Pages (`geoset.pl`) |
 | `.nojekyll` | wyłącza przetwarzanie przez Jekyll |
 
@@ -23,8 +25,12 @@ Podglądu pod `budziam.github.io/geoset-site/` nie ma: obecność `CNAME` powodu
 GitHub przekierowuje ten adres na `geoset.pl`. Żeby zobaczyć stronę przed zmianą DNS,
 usuń na chwilę `CNAME`, albo testuj lokalnie (`python3 -m http.server`).
 
-Podmiana logo: nadpisz `logo.svg` (najlepiej `viewBox="0 0 64 64"`).
-Podmiana nazwy: `<h1 class="title">` w `index.html` oraz `<title>` i tagi `og:`.
+Logo: `logo-source.png` to oryginał z profilu FB firmy (biały blok 1458×1458).
+`logo.png` powstał przez przycięcie marginesów, sprowadzenie tła do czystej bieli
+i eksport w 960 px (2× szerokości wyświetlania). Podmieniając logo, zachowaj proporcje
+i zostaw białe tło — w trybie ciemnym strona kładzie je na białej płytce.
+
+Podmiana nazwy/opisu: `<title>`, `meta description` i tagi `og:` w `index.html`.
 
 ## Publikacja
 
