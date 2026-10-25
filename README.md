@@ -17,6 +17,15 @@ Strona dostosowuje się do trybu jasnego/ciemnego (`prefers-color-scheme`).
 | `logo-source.png` | master 1458×1458 — źródło do ponownego eksportu |
 | `CNAME` | domena dla GitHub Pages (`geoset.pl`) |
 | `.nojekyll` | wyłącza przetwarzanie przez Jekyll |
+| `bin/fingerprint.py` | odświeża `?v=` w HTML po zmianie CSS/logo |
+
+GitHub Pages wysyła assety z `cache-control: max-age=600`, więc po deployu
+przeglądarka może jeszcze przez 10 minut pokazywać starą wersję. Dlatego CSS,
+logo i favicon są linkowane z `?v=<sha256>`. Po edycji któregokolwiek z nich:
+
+```bash
+./bin/fingerprint.py
+```
 
 `index.html` używa ścieżek relatywnych, `404.html` — bezwzględnych, bo GitHub Pages
 serwuje 404 pod dowolną głębokością ścieżki.
